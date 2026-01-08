@@ -219,37 +219,27 @@ const DOCTYPE_NAME = seal(/^html$/i);
 const CUSTOM_ELEMENT = seal(/^[a-z][.\w]*(-[.\w]+)+$/i);
 
 var EXPRESSIONS = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  ARIA_ATTR: ARIA_ATTR,
-  ATTR_WHITESPACE: ATTR_WHITESPACE,
-  CUSTOM_ELEMENT: CUSTOM_ELEMENT,
-  DATA_ATTR: DATA_ATTR,
-  DOCTYPE_NAME: DOCTYPE_NAME,
-  ERB_EXPR: ERB_EXPR,
-  IS_ALLOWED_URI: IS_ALLOWED_URI,
-  IS_SCRIPT_OR_DATA: IS_SCRIPT_OR_DATA,
-  MUSTACHE_EXPR: MUSTACHE_EXPR,
-  TMPLIT_EXPR: TMPLIT_EXPR
+    __proto__: null,
+    ARIA_ATTR: ARIA_ATTR,
+    ATTR_WHITESPACE: ATTR_WHITESPACE,
+    CUSTOM_ELEMENT: CUSTOM_ELEMENT,
+    DATA_ATTR: DATA_ATTR,
+    DOCTYPE_NAME: DOCTYPE_NAME,
+    ERB_EXPR: ERB_EXPR,
+    IS_ALLOWED_URI: IS_ALLOWED_URI,
+    IS_SCRIPT_OR_DATA: IS_SCRIPT_OR_DATA,
+    MUSTACHE_EXPR: MUSTACHE_EXPR,
+    TMPLIT_EXPR: TMPLIT_EXPR
 });
 
-/* eslint-disable @typescript-eslint/indent */
 // https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType
 const NODE_TYPE = {
   element: 1,
-  attribute: 2,
   text: 3,
-  cdataSection: 4,
-  entityReference: 5,
-  // Deprecated
-  entityNode: 6,
   // Deprecated
   progressingInstruction: 7,
   comment: 8,
-  document: 9,
-  documentType: 10,
-  documentFragment: 11,
-  notation: 12 // Deprecated
-};
+  document: 9};
 const getGlobal = function getGlobal() {
   return typeof window === 'undefined' ? null : window;
 };
@@ -1191,7 +1181,7 @@ function createDOMPurify() {
    *
    * @param fragment to iterate over recursively
    */
-  const _sanitizeShadowDOM = function _sanitizeShadowDOM(fragment) {
+  const _sanitizeShadowDOM2 = function _sanitizeShadowDOM(fragment) {
     let shadowNode = null;
     const shadowIterator = _createNodeIterator(fragment);
     /* Execute a hook if present */
@@ -1205,7 +1195,7 @@ function createDOMPurify() {
       _sanitizeAttributes(shadowNode);
       /* Deep shadow DOM detected */
       if (shadowNode.content instanceof DocumentFragment) {
-        _sanitizeShadowDOM(shadowNode.content);
+        _sanitizeShadowDOM2(shadowNode.content);
       }
     }
     /* Execute a hook if present */
@@ -1300,7 +1290,7 @@ function createDOMPurify() {
       _sanitizeAttributes(currentNode);
       /* Shadow DOM detected, sanitize it */
       if (currentNode.content instanceof DocumentFragment) {
-        _sanitizeShadowDOM(currentNode.content);
+        _sanitizeShadowDOM2(currentNode.content);
       }
     }
     /* If we sanitized `dirty` in-place, return it. */
