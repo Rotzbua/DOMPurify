@@ -1,6 +1,4 @@
 import fs from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 import { babel } from '@rollup/plugin-babel';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
@@ -43,23 +41,23 @@ const config = [
     output: [
       {
         ...commonOutputConfig,
-        file: pkg.browser,
+        file: pkg.exports['.'].browser.default,
         format: 'umd',
       },
       {
         ...commonOutputConfig,
-        file: pkg.production,
+        file: pkg.exports['.'].production.default,
         format: 'umd',
         plugins: [terser()],
       },
       {
         ...commonOutputConfig,
-        file: pkg.module,
+        file: pkg.exports['.'].import.default,
         format: 'es',
       },
       {
         ...commonOutputConfig,
-        file: pkg.main,
+        file: pkg.exports['.'].require.default,
         format: 'cjs',
       },
     ],
@@ -86,7 +84,7 @@ const config = [
     input: './dist/types/purify.d.ts',
     output: [
       {
-        file: pkg.module.replace(/\.mjs$/, '.d.mts'),
+        file: pkg.exports['.'].import.types,
         format: 'es',
         banner: commonOutputConfig.banner,
       },
@@ -99,7 +97,7 @@ const config = [
     input: './dist/types/purify.d.ts',
     output: [
       {
-        file: pkg.main.replace(/\.js$/, '.d.ts'),
+        file: pkg.exports['.'].require.types,
         format: 'cjs',
         banner: commonOutputConfig.banner,
       },

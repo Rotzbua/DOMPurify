@@ -4,7 +4,7 @@
     "lint:fix": "xo src/**/*.ts --fix",
     "format": "npm run format:js && npm run format:md",
     "format:md": "prettier --write --parser markdown '**/*.md'",
-    "format:js": "prettier --write '{src,demos,scripts,test,website}/*.{js,ts}'",
+    "format:js": "prettier --write '{src,demos,scripts,test,website}/*.{js,ts,cjs,mjs}'",
     "commit-amend-build": "scripts/commit-amend-build.sh",
     "prebuild": "rimraf dist/",
     "dev": "cross-env NODE_ENV=development BABEL_ENV=rollup rollup -w -c -o dist/purify.js",
@@ -17,25 +17,26 @@
     "build:es": "rollup -c -f es -o dist/purify.es.mjs",
     "build:cjs": "rollup -c -f cjs -o dist/purify.cjs.js",
     "build:cleanup": "rimraf dist/types",
-    "test:jsdom": "cross-env NODE_ENV=test BABEL_ENV=rollup node test/jsdom-node-runner --dot",
-    "test:karma": "cross-env NODE_ENV=test BABEL_ENV=rollup karma start test/karma.conf.js --log-level warn ",
+    "test:jsdom": "cross-env NODE_ENV=test BABEL_ENV=rollup node test/jsdom-node-runner.cjs --dot",
+    "test:karma": "cross-env NODE_ENV=test BABEL_ENV=rollup karma start test/karma.conf.cjs --log-level warn",
     "test:ci": "cross-env NODE_ENV=test BABEL_ENV=rollup npm run test:jsdom && npm run test:karma -- --log-level error --reporters dots --single-run --shouldTestOnBrowserStack=\"${TEST_BROWSERSTACK}\" --shouldProbeOnly=\"${TEST_PROBE_ONLY}\"",
-    "test": "cross-env NODE_ENV=test BABEL_ENV=rollup npm run lint &&  npm run test:jsdom && npm run test:karma -- --browsers Chrome",
+    "test": "cross-env NODE_ENV=test BABEL_ENV=rollup npm run lint && npm run test:jsdom && npm run test:karma -- --browsers Chrome",
     "verify-typescript": "node ./typescript/verify.js"
   },
   "type": "module",
-  "main": "./dist/purify.cjs.js",
-  "module": "./dist/purify.es.mjs",
-  "browser": "./dist/purify.js",
-  "production": "./dist/purify.min.js",
-  "types": "./dist/purify.cjs.d.ts",
   "exports": {
     ".": {
+      "browser": {
+        "default": "./dist/purify.js"
+      },
+      "production": {
+        "default": "./dist/purify.min.js"
+      },
       "import": {
         "types": "./dist/purify.es.d.mts",
         "default": "./dist/purify.es.mjs"
       },
-      "default": {
+      "require": {
         "types": "./dist/purify.cjs.d.ts",
         "default": "./dist/purify.cjs.js"
       }

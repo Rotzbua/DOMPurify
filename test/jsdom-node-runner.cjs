@@ -20,5 +20,5 @@ qunitTap(QUnit, (line) => {
   console.log(line);
 });
 
-const startQUnit = require('./jsdom-node');
+const startQUnit = require('./jsdom-node.cjs');
 startQUnit().then(() => QUnit.load());

@@ -1,8 +1,8 @@
 const includePaths = require('rollup-plugin-includepaths');
 const rollupConfig = require('../rollup.config.js')[0];
 const customLaunchers =
-  require('./karma.custom-launchers.config.js').customLaunchers;
-const browsers = require('./karma.custom-launchers.config.js').browsers;
+  require('./karma.custom-launchers.config.cjs').customLaunchers;
+const browsers = require('./karma.custom-launchers.config.cjs').browsers;
 
 rollupConfig.plugins.push(
   includePaths({
