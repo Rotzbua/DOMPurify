@@ -1,19 +1,19 @@
 const includePaths = require('rollup-plugin-includepaths');
-const rollupConfig = require('../rollup.config.js')[0];
+// const rollupConfig = require('../rollup.config.js')[0];
 const customLaunchers =
   require('./karma.custom-launchers.config.cjs').customLaunchers;
 const browsers = require('./karma.custom-launchers.config.cjs').browsers;
 
-rollupConfig.plugins.push(
-  includePaths({
-    include: {
-      purify: 'dist/purify.js',
-      'purify.min': 'dist/purify.min.js',
-    },
-  })
-);
-
-rollupConfig.output.format = 'umd';
+// rollupConfig.plugins.push(
+//   includePaths({
+//     include: {
+//       purify: 'dist/purify.js',
+//       'purify.min': 'dist/purify.min.js',
+//     },
+//   })
+// );
+//
+// rollupConfig.output.format = 'umd';
 
 module.exports = function (config) {
   config.set({
@@ -42,7 +42,7 @@ module.exports = function (config) {
       accessKey: process.env.BS_ACCESSKEY,
     },
 
-    rollupPreprocessor: rollupConfig,
+    // rollupPreprocessor: rollupConfig,
 
     customLaunchers,
     browsers,
