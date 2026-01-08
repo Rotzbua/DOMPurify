@@ -1,4 +1,4 @@
-import 'purify.min';
+import 'purify.min.js';
 import './test-suite';
 import tests from './fixtures/expect.mjs';
 
