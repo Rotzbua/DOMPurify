@@ -1,12 +1,14 @@
-const fs = require('fs');
-const { DEFAULT_EXTENSIONS } = require('@babel/core');
-const babel = require('@rollup/plugin-babel').babel;
-const nodeResolve = require('@rollup/plugin-node-resolve').nodeResolve;
-const replace = require('@rollup/plugin-replace');
-const terser = require('@rollup/plugin-terser');
-const typescript = require('@rollup/plugin-typescript');
-const { dts } = require('rollup-plugin-dts');
-const pkg = require('./package.json');
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { DEFAULT_EXTENSIONS } from '@babel/core';
+import { babel } from '@rollup/plugin-babel';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
+import terser from '@rollup/plugin-terser';
+import typescript from '@rollup/plugin-typescript';
+import { dts } from 'rollup-plugin-dts';
+import pkg from './package.json' with { type: 'json' };
 
 const env = process.env.NODE_ENV;
 const version = process.env.npm_package_version;
@@ -109,4 +111,4 @@ const config = [
   },
 ];
 
-module.exports = config;
+export default config;

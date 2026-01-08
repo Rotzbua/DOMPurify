@@ -23,6 +23,7 @@
     "test": "cross-env NODE_ENV=test BABEL_ENV=rollup npm run lint &&  npm run test:jsdom && npm run test:karma -- --browsers Chrome",
     "verify-typescript": "node ./typescript/verify.js"
   },
+  "type": "module",
   "main": "./dist/purify.cjs.js",
   "module": "./dist/purify.es.mjs",
   "browser": "./dist/purify.js",
