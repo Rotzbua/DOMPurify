@@ -6,7 +6,7 @@ const {
   getOwnPropertyDescriptor,
 } = Object;
 
-let { freeze, seal, create } = Object; // eslint-disable-line import/no-mutable-exports
+let { freeze, seal, create } = Object; // eslint-disable-line import-x/no-mutable-exports
 let { apply, construct } = typeof Reflect !== 'undefined' && Reflect;
 
 if (!freeze) {
