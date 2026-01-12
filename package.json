@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "lint": "xo src/*.ts",
+    "lint": "xo src/**/*.ts",
+    "lint:fix": "xo --fix src/**/*.ts",
     "format": "npm run format:js && npm run format:md",
     "format:md": "prettier --write --parser markdown '**/*.md'",
     "format:js": "prettier --write '{src,demos,scripts,test,website}/*.{js,ts}'",
@@ -51,52 +52,6 @@
     "build",
     "commit-amend-build"
   ],
-  "xo": {
-    "semicolon": true,
-    "space": 2,
-    "extends": [
-      "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ],
-    "rules": {
-      "import/no-useless-path-segments": 0,
-      "unicorn/prefer-optional-catch-binding": 0,
-      "unicorn/prefer-node-remove": 0,
-      "prettier/prettier": [
-        "error",
-        {
-          "trailingComma": "es5",
-          "singleQuote": true
-        }
-      ],
-      "camelcase": [
-        "error",
-        {
-          "properties": "never"
-        }
-      ],
-      "@typescript-eslint/ban-types": 0,
-      "@typescript-eslint/consistent-type-definitions": 0,
-      "@typescript-eslint/indent": 0,
-      "@typescript-eslint/naming-convention": 0,
-      "@typescript-eslint/no-throw-literal": 0,
-      "@typescript-eslint/no-unnecessary-boolean-literal-compare": 0,
-      "@typescript-eslint/no-unsafe-argument": 0,
-      "@typescript-eslint/no-unsafe-assignment": 0,
-      "@typescript-eslint/no-unsafe-call": 0,
-      "@typescript-eslint/no-unsafe-return": 0,
-      "@typescript-eslint/prefer-includes": 0,
-      "@typescript-eslint/prefer-optional-chain": 0,
-      "@typescript-eslint/prefer-nullish-coalescing": 0,
-      "@typescript-eslint/restrict-plus-operands": 0
-    },
-    "globals": [
-      "window",
-      "VERSION"
-    ]
-  },
   "engines": {
     "node": ">=20"
   },
@@ -113,8 +68,6 @@
     "@types/estree": "^1.0.0",
     "@types/node": "^16.18.120",
     "cross-env": "^7.0.3",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
     "jquery": "^3.6.0",
     "jsdom": "^20.0.0",
     "karma": "^6.3.17",
@@ -127,7 +80,6 @@
     "minimist": "^1.2.6",
     "npm-run-all": "^4.1.5",
     "pre-commit": "^1.2.2",
-    "prettier": "^2.5.1",
     "qunit": "^2.4.1",
     "qunit-tap": "^1.5.0",
     "rimraf": "^3.0.2",
@@ -137,7 +89,7 @@
     "rollup-plugin-typescript2": "^0.36.0",
     "tslib": "^2.7.0",
     "typescript": "^5.6.3",
-    "xo": "^0.54.1"
+    "xo": "^1.2.3"
   },
   "resolutions": {
     "natives": "1.1.6"
