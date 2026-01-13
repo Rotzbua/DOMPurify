@@ -1,7 +1,12 @@
 // @ts-check
 
-const fs = require('node:fs/promises');
-const path = require('node:path');
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 (async () => {
   // Note that this script is intended to run on the type declaration file that is

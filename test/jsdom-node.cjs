@@ -14,7 +14,7 @@ const { window } = new JSDOM(
 require('jquery')(window);
 
 const sanitizeTestSuite = require('./test-suite');
-const bootstrapTestSuite = require('./bootstrap-test-suite');
+const bootstrapTestSuite = require('./bootstrap-test-suite.cjs');
 
 async function startQUnit() {
   const { default: tests } = await import('./fixtures/expect.mjs');
