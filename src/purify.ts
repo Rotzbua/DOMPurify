@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/indent */
+/* eslint-disable @stylistic/indent */
+/* eslint-disable @stylistic/indent-binary-ops */
 
 import type {
   TrustedHTML,
